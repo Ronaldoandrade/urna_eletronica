@@ -228,17 +228,23 @@ public class Eleitores extends javax.swing.JFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         int inscricao = Integer.parseInt(txtInscricao.getText());
         String nome = txtNome.getText();
-        int nascimento = Integer.parseInt(txtNasc.getText());
+        String nascimento = txtNasc.getText();
         int zona = Integer.parseInt (txtZona.getText());
         int secao = Integer.parseInt(txtSecao.getText());
-        int emissao = Integer.parseInt(txtEmissao.getText());
+        String emissao = txtEmissao.getText();
         String municipio = txtMunicipio.getText();
         String unidadefed = txtUnidade.getText();
         String pai = txtPai.getText();
         String mae = txtMae.getText();
         
-        String sql = "insert eleitores (? , ? , ? , ?, ?, ?, ?, ?, ? , ,?)";
-        String url = "jdbc:mysql://127.0.0.1:3306/eleicao" ;
+        java.util.Date nascimento2 = new java.util.Date(nascimento);
+        java.sql.Date nascimento2sql = new java.sql.Date(nascimento2.getTime());
+        
+        java.util.Date emissao2 = new java.util.Date(emissao);
+        java.sql.Date emissao2sql = new java.sql.Date(emissao2.getTime());
+        
+        String sql = "insert eleitor values (? , ? , ? , ?, ?, ?, ?, ?, ? ,?)";
+        String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
         String usuario = "root";
         String senha = "root"; 
         
@@ -248,10 +254,10 @@ public class Eleitores extends javax.swing.JFrame {
         
         comando.setInt (1 , inscricao);
         comando.setString (2 , nome);
-        comando.setInt (3 , nascimento);
+        comando.setDate (3 , nascimento2sql);
         comando.setInt(4, zona);
         comando.setInt(5, secao);
-        comando.setInt(6, emissao);
+        comando.setDate(6, emissao2sql);
         comando.setString(7, municipio);
         comando.setString(8, unidadefed);
         comando.setString(9, pai);

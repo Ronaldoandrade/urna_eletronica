@@ -1,5 +1,11 @@
 package urnaeletronica;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -31,8 +37,6 @@ public class Governador extends javax.swing.JFrame {
         lblSigla = new javax.swing.JLabel();
         txtSliga = new javax.swing.JTextField();
         lblFoto = new javax.swing.JLabel();
-        lblTotal = new javax.swing.JLabel();
-        txtTotal = new javax.swing.JTextField();
         lblDepEst = new javax.swing.JLabel();
         lblNumero = new javax.swing.JLabel();
         txtNumero = new javax.swing.JTextField();
@@ -48,8 +52,6 @@ public class Governador extends javax.swing.JFrame {
 
         lblFoto.setText("Foto:");
 
-        lblTotal.setText("Total de Votos:");
-
         lblDepEst.setText("Governador:");
 
         lblNumero.setText("Número:");
@@ -57,8 +59,18 @@ public class Governador extends javax.swing.JFrame {
         lblNome.setText("Nome:");
 
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         btnSair.setText("Sair");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,29 +88,28 @@ public class Governador extends javax.swing.JFrame {
                                 .addComponent(txtSliga, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblNumero)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblNome)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtNome))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblFoto)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblFotof, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblTotal)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnSalvar)
-                                        .addGap(35, 35, 35)
-                                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(txtTotal))))
-                        .addGap(0, 76, Short.MAX_VALUE))))
+                                        .addComponent(lblNumero)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblFoto)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblFotof, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(btnSalvar)
+                                                .addGap(41, 41, 41)
+                                                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 24, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,18 +133,51 @@ public class Governador extends javax.swing.JFrame {
                     .addComponent(lblFoto)
                     .addComponent(lblFotof, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTotal)
-                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSalvar)
                     .addComponent(btnSair))
-                .addGap(26, 26, 26))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+       int numero = Integer.parseInt(txtNumero.getText());
+       String nome = txtNome.getText();
+       String sigla = txtSliga.getText();
+       String foto = lblFoto.getText();
+      
+       
+       String sql = "insert governador values (? , ? , ? , ?)";
+       String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+       String usuario = "root";
+       String senha = "root";
+       
+       try {
+       Connection conexao = DriverManager.getConnection(url, usuario, senha);
+       PreparedStatement comando = conexao.prepareStatement(sql);
+       
+       comando.setInt(1 , numero);
+       comando.setString(2, nome);
+       comando.setString(3, sigla);
+       comando.setString(4, foto);
+       
+       
+       comando.executeUpdate();
+       comando.close();
+       conexao.close();
+       JOptionPane.showMessageDialog(null,"Acesso permitido");
+       } catch(SQLException erro) {
+       JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados");
+       erro.printStackTrace();
+       }
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        JOptionPane.showMessageDialog(null, "SAINDO DO CADASTRO GOVERNADOR");
+        System.exit(1);
+    }//GEN-LAST:event_btnSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,10 +223,8 @@ public class Governador extends javax.swing.JFrame {
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNumero;
     private javax.swing.JLabel lblSigla;
-    private javax.swing.JLabel lblTotal;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNumero;
     private javax.swing.JTextField txtSliga;
-    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }

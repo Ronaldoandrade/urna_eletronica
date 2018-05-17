@@ -1,5 +1,11 @@
 package urnaeletronica;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -36,8 +42,6 @@ public class DepEstadual extends javax.swing.JFrame {
         lblSigla = new javax.swing.JLabel();
         txtSliga = new javax.swing.JTextField();
         lblFoto = new javax.swing.JLabel();
-        lblTotal = new javax.swing.JLabel();
-        txtTotal = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
         lblFotof = new javax.swing.JLabel();
@@ -54,8 +58,6 @@ public class DepEstadual extends javax.swing.JFrame {
 
         lblFoto.setText("Foto:");
 
-        lblTotal.setText("Total de Votos:");
-
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,6 +66,11 @@ public class DepEstadual extends javax.swing.JFrame {
         });
 
         btnSair.setText("Sair");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,28 +89,24 @@ public class DepEstadual extends javax.swing.JFrame {
                                 .addComponent(lblNome)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtNome))
-                            .addComponent(lblFoto)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblTotal)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTotal)))
-                        .addGap(0, 76, Short.MAX_VALUE))
+                                .addComponent(lblFoto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnSalvar)
+                                    .addComponent(lblFotof, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 23, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblFotof, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblDepEst)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblSigla)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtSliga, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(btnSalvar)
-                .addGap(66, 66, 66)
-                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDepEst)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblSigla)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtSliga, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(124, 124, 124)
+                                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(94, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,16 +128,13 @@ public class DepEstadual extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblFoto)
-                    .addComponent(lblFotof, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTotal)
-                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvar)
-                    .addComponent(btnSair))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblFotof, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnSair)
+                            .addComponent(btnSalvar))))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -145,9 +145,37 @@ public class DepEstadual extends javax.swing.JFrame {
        String nome = txtNome.getText();
        String sigla = txtSliga.getText();
        String foto = lblFoto.getText();
-       int totalvotos = Integer.parseInt(txtTotal.getText());
+       
+       String sql = "insert depestadual values (? , ? , ? , ?)";
+       String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+       String usuario = "root";
+       String senha = "root";
+       
+       try {
+       Connection conexao = DriverManager.getConnection(url, usuario, senha);
+       PreparedStatement comando = conexao.prepareStatement(sql);
+       
+       comando.setInt(1 , numero);
+       comando.setString(2, nome);
+       comando.setString(3, sigla);
+       comando.setString(4, foto);
+   
+       
+       comando.executeUpdate();
+       comando.close();
+       conexao.close();
+       JOptionPane.showMessageDialog(null,"Acesso permitido");
+       } catch(SQLException erro) {
+       JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados");
+       erro.printStackTrace();
+       }
        
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        JOptionPane.showMessageDialog(null, "SAINDO DO CADASTRO DEPUTADO ESTADUAL");
+        System.exit(1);
+    }//GEN-LAST:event_btnSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,10 +221,8 @@ public class DepEstadual extends javax.swing.JFrame {
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNumero;
     private javax.swing.JLabel lblSigla;
-    private javax.swing.JLabel lblTotal;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNumero;
     private javax.swing.JTextField txtSliga;
-    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }
