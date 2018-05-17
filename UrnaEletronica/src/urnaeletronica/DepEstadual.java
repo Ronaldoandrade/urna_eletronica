@@ -1,9 +1,13 @@
 package urnaeletronica;
 
+import java.awt.Image;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /*
@@ -34,19 +38,40 @@ public class DepEstadual extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jpnFoto = new javax.swing.JPanel();
+        lblFoto2 = new javax.swing.JLabel();
         lblDepEst = new javax.swing.JLabel();
         lblNumero = new javax.swing.JLabel();
-        txtNumero = new javax.swing.JTextField();
         lblNome = new javax.swing.JLabel();
-        txtNome = new javax.swing.JTextField();
         lblSigla = new javax.swing.JLabel();
-        txtSliga = new javax.swing.JTextField();
         lblFoto = new javax.swing.JLabel();
+        txtNumero = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
+        txtSigla = new javax.swing.JTextField();
+        txtFoto = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
-        lblFotof = new javax.swing.JLabel();
+        btnAdd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastro do Deputado Federal");
+
+        javax.swing.GroupLayout jpnFotoLayout = new javax.swing.GroupLayout(jpnFoto);
+        jpnFoto.setLayout(jpnFotoLayout);
+        jpnFotoLayout.setHorizontalGroup(
+            jpnFotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnFotoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFoto2, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jpnFotoLayout.setVerticalGroup(
+            jpnFotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnFotoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFoto2, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         lblDepEst.setText("Deputado Estadual:");
 
@@ -72,6 +97,13 @@ public class DepEstadual extends javax.swing.JFrame {
             }
         });
 
+        btnAdd.setText("Adicionar foto");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -94,7 +126,12 @@ public class DepEstadual extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnSalvar)
-                                    .addComponent(lblFotof, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jpnFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtFoto)
+                                            .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                         .addGap(0, 23, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,7 +139,7 @@ public class DepEstadual extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblSigla)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtSliga, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtSigla, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(124, 124, 124)
                                 .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -124,12 +161,17 @@ public class DepEstadual extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSigla)
-                    .addComponent(txtSliga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSigla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblFoto)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblFotof, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jpnFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnAdd)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnSair)
@@ -138,35 +180,61 @@ public class DepEstadual extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
        int numero = Integer.parseInt(txtNumero.getText());
        String nome = txtNome.getText();
-       String sigla = txtSliga.getText();
-       String foto = lblFoto.getText();
+       String sigla = txtSigla.getText();
+       String foto = txtFoto.getText();
        
-       String sql = "insert depestadual values (? , ? , ? , ?)";
+       String sql = "insert depestadual values (? , ? , ?, ?, ?)";
+       
        String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
        String usuario = "root";
-       String senha = "root";
+       String senha = "bluetooth007";
        
        try {
+           //Conecta com o banco de dados
        Connection conexao = DriverManager.getConnection(url, usuario, senha);
+       
+       
+           //Preparar o comando que será executado
        PreparedStatement comando = conexao.prepareStatement(sql);
        
+       
+       //Definir o valor de cada interrogação
        comando.setInt(1 , numero);
        comando.setString(2, nome);
        comando.setString(3, sigla);
        comando.setString(4, foto);
    
-       
+       //executa o comando
        comando.executeUpdate();
+       
+       //Libera os recursos
        comando.close();
        conexao.close();
+       
+       //Exibir uma mensagem de sucesso
        JOptionPane.showMessageDialog(null,"Acesso permitido");
+       
+       //Limpar os campos de inserção
+            txtNumero.setText("");
+            txtNome.setText("");
+            txtSigla.setText("");
+            txtFoto.setText("");
+            lblFoto2.setText("");
+            
+            txtNumero.requestFocus();
+   
+            
        } catch(SQLException erro) {
+           //Exibe uma mensagem de erro
        JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados");
+       
+       //Exibe o erro no console
        erro.printStackTrace();
        }
        
@@ -176,6 +244,27 @@ public class DepEstadual extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "SAINDO DO CADASTRO DEPUTADO ESTADUAL");
         System.exit(1);
     }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        JFileChooser buscarFoto = new JFileChooser();
+            buscarFoto.setDialogTitle("Carregar imagem");
+            buscarFoto.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            
+            int opcao = buscarFoto.showOpenDialog(this);
+            if(opcao == JFileChooser.APPROVE_OPTION){
+                File file = new File("Caminho");
+                file = buscarFoto.getSelectedFile(); //Recebe o caminho
+                String foto = file.getAbsolutePath();
+                
+                txtFoto.setText(foto);
+                
+                ImageIcon imagem = new ImageIcon(buscarFoto.getSelectedFile().getPath());
+                
+                lblFoto2.setIcon(new ImageIcon(imagem.getImage().getScaledInstance(lblFoto2.getWidth(),
+                        lblFoto2.getHeight(), Image.SCALE_DEFAULT)));
+                
+            }
+    }//GEN-LAST:event_btnAddActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,16 +302,19 @@ public class DepEstadual extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JPanel jpnFoto;
     private javax.swing.JLabel lblDepEst;
     private javax.swing.JLabel lblFoto;
-    private javax.swing.JLabel lblFotof;
+    private javax.swing.JLabel lblFoto2;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNumero;
     private javax.swing.JLabel lblSigla;
+    private javax.swing.JTextField txtFoto;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNumero;
-    private javax.swing.JTextField txtSliga;
+    private javax.swing.JTextField txtSigla;
     // End of variables declaration//GEN-END:variables
 }
