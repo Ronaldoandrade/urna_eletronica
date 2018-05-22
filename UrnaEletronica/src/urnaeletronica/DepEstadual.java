@@ -188,8 +188,9 @@ public class DepEstadual extends javax.swing.JFrame {
        String nome = txtNome.getText();
        String sigla = txtSigla.getText();
        String foto = txtFoto.getText();
+       int totalVotos = 0;
        
-       String sql = "insert depestadual values (? , ? , ?, ?, ?)";
+       String sql = "insert depestadual values (?, ?, ?, ?, ?)";
        
        String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
        String usuario = "root";
@@ -209,6 +210,7 @@ public class DepEstadual extends javax.swing.JFrame {
        comando.setString(2, nome);
        comando.setString(3, sigla);
        comando.setString(4, foto);
+       comando.setInt(5, totalVotos);
    
        //executa o comando
        comando.executeUpdate();
