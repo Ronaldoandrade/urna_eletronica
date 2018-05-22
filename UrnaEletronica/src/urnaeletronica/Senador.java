@@ -1,9 +1,13 @@
 package urnaeletronica;
 
+import java.awt.Image;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /*
@@ -34,29 +38,50 @@ public class Senador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblSigla = new javax.swing.JLabel();
-        txtSliga = new javax.swing.JTextField();
-        lblFoto = new javax.swing.JLabel();
         lblDepEst = new javax.swing.JLabel();
         lblNumero = new javax.swing.JLabel();
-        txtNumero = new javax.swing.JTextField();
         lblNome = new javax.swing.JLabel();
+        lblSigla = new javax.swing.JLabel();
+        lblFoto = new javax.swing.JLabel();
+        jpnFoto = new javax.swing.JPanel();
+        lblFoto2 = new javax.swing.JLabel();
+        txtNumero = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
+        txtSigla = new javax.swing.JTextField();
+        txtFoto = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
-        lblFotof = new javax.swing.JLabel();
+        btnAdicionar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        lblSigla.setText("Sigla do Partido:");
-
-        lblFoto.setText("Foto:");
+        setTitle("Cadastro Senador");
 
         lblDepEst.setText("Senador");
 
         lblNumero.setText("Número:");
 
         lblNome.setText("Nome:");
+
+        lblSigla.setText("Sigla do Partido:");
+
+        lblFoto.setText("Foto:");
+
+        javax.swing.GroupLayout jpnFotoLayout = new javax.swing.GroupLayout(jpnFoto);
+        jpnFoto.setLayout(jpnFotoLayout);
+        jpnFotoLayout.setHorizontalGroup(
+            jpnFotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnFotoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFoto2, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jpnFotoLayout.setVerticalGroup(
+            jpnFotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnFotoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFoto2, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -69,6 +94,13 @@ public class Senador extends javax.swing.JFrame {
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSairActionPerformed(evt);
+            }
+        });
+
+        btnAdicionar.setText("Adicionar foto");
+        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarActionPerformed(evt);
             }
         });
 
@@ -85,7 +117,7 @@ public class Senador extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblSigla)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtSliga, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtSigla, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,22 +126,25 @@ public class Senador extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtNome))
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblNumero)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 2, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblFoto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblNumero)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(btnSalvar)
+                                        .addGap(75, 75, 75)
+                                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblFoto)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jpnFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblFotof, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(btnSalvar)
-                                                .addGap(45, 45, 45)
-                                                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(0, 23, Short.MAX_VALUE))))
+                                            .addComponent(txtFoto)
+                                            .addComponent(btnAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                        .addGap(21, 21, 21))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,32 +162,45 @@ public class Senador extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSigla)
-                    .addComponent(txtSliga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtSigla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblFoto)
-                    .addComponent(lblFotof, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblFoto)
+                                .addGap(85, 85, 85))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jpnFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(txtFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)
+                        .addComponent(btnAdicionar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSalvar)
                     .addComponent(btnSair))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
        int numero = Integer.parseInt(txtNumero.getText());
        String nome = txtNome.getText();
-       String sigla = txtSliga.getText();
-       String foto = lblFoto.getText();
+       String sigla = txtSigla.getText();
+       String foto = txtFoto.getText();
+       int totalVotos = 0;
        
        
-       String sql = "insert senador values (? , ? , ? , ?)";
+       String sql = "insert senador values (?, ?, ?, ?, ?)";
        String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
        String usuario = "root";
-       String senha = "root";
+       String senha = "bluetooth007";
        
        try {
        Connection conexao = DriverManager.getConnection(url, usuario, senha);
@@ -162,12 +210,24 @@ public class Senador extends javax.swing.JFrame {
        comando.setString(2, nome);
        comando.setString(3, sigla);
        comando.setString(4, foto);
+       comando.setInt(5, totalVotos);
       
        
        comando.executeUpdate();
        comando.close();
        conexao.close();
+       
        JOptionPane.showMessageDialog(null,"Acesso permitido");
+       
+       //Limpar os campos de inserção
+            txtNumero.setText("");
+            txtNome.setText("");
+            txtSigla.setText("");
+            txtFoto.setText("");
+            lblFoto2.setText("");
+            
+            txtNumero.requestFocus();
+            
        } catch(SQLException erro) {
        JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados");
        erro.printStackTrace();
@@ -178,6 +238,28 @@ public class Senador extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "SAINDO DO CADASTRO SENADOR");
         System.exit(1);
     }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
+        JFileChooser buscarFoto = new JFileChooser();
+            buscarFoto.setDialogTitle("Carregar imagem");
+            buscarFoto.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            
+            int opcao = buscarFoto.showOpenDialog(this);
+            
+            if(opcao == JFileChooser.APPROVE_OPTION){
+                File file = new File("Caminho");
+                file = buscarFoto.getSelectedFile(); //Recebe o caminho
+                String foto = file.getAbsolutePath();
+                
+                txtFoto.setText(foto);
+                
+                ImageIcon imagem = new ImageIcon(buscarFoto.getSelectedFile().getPath());
+                
+                lblFoto2.setIcon(new ImageIcon(imagem.getImage().getScaledInstance(lblFoto2.getWidth(),
+                        lblFoto2.getHeight(), Image.SCALE_DEFAULT)));
+                
+            }
+    }//GEN-LAST:event_btnAdicionarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,16 +297,19 @@ public class Senador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdicionar;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JPanel jpnFoto;
     private javax.swing.JLabel lblDepEst;
     private javax.swing.JLabel lblFoto;
-    private javax.swing.JLabel lblFotof;
+    private javax.swing.JLabel lblFoto2;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNumero;
     private javax.swing.JLabel lblSigla;
+    private javax.swing.JTextField txtFoto;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNumero;
-    private javax.swing.JTextField txtSliga;
+    private javax.swing.JTextField txtSigla;
     // End of variables declaration//GEN-END:variables
 }
