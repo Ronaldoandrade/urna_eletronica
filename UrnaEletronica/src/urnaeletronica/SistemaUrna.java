@@ -161,15 +161,18 @@ public class SistemaUrna extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImnCadastPresidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImnCadastPresidenteActionPerformed
-        // TODO add your handling code here:
+        Presidente tela = new Presidente();
+        tela.setVisible(true);
     }//GEN-LAST:event_ImnCadastPresidenteActionPerformed
 
     private void ImnCadastGovernadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImnCadastGovernadorActionPerformed
-        // TODO add your handling code here:
+        Governador tela = new Governador();
+        tela.setVisible(true);
     }//GEN-LAST:event_ImnCadastGovernadorActionPerformed
 
     private void ImnCadastSenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImnCadastSenadorActionPerformed
-        // TODO add your handling code here:
+        Senador tela = new Senador();
+        tela.setVisible(true);
     }//GEN-LAST:event_ImnCadastSenadorActionPerformed
 
     private void ImnConsPrasidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImnConsPrasidenteActionPerformed
