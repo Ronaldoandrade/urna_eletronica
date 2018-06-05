@@ -53,7 +53,7 @@ public class DepEstadual extends javax.swing.JFrame {
         btnSair = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro do Deputado Federal");
 
         javax.swing.GroupLayout jpnFotoLayout = new javax.swing.GroupLayout(jpnFoto);

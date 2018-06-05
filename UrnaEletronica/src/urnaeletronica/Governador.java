@@ -53,7 +53,7 @@ public class Governador extends javax.swing.JFrame {
         btnSair = new javax.swing.JButton();
         btnAdicionar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro Governador");
 
         lblDepEst.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N

@@ -59,7 +59,7 @@ public class Eleitores extends javax.swing.JFrame {
         btnSalvar = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblEleitor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblEleitor.setText("Cadastro de Eleitor");
