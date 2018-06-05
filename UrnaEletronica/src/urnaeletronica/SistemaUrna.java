@@ -158,6 +158,7 @@ public class SistemaUrna extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImnCadastPresidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImnCadastPresidenteActionPerformed

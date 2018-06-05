@@ -245,7 +245,7 @@ public class DepEstadual extends javax.swing.JFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         JOptionPane.showMessageDialog(null, "SAINDO DO CADASTRO DEPUTADO ESTADUAL");
-        System.exit(1);
+        dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed

@@ -32,7 +32,9 @@ public class Eleicao extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        eleicao2018 = new javax.swing.JLabel();
+        lblTipoCand = new javax.swing.JLabel();
+        lblTituloCand = new javax.swing.JLabel();
         Btn1 = new javax.swing.JButton();
         Btn2 = new javax.swing.JButton();
         Btn3 = new javax.swing.JButton();
@@ -46,19 +48,23 @@ public class Eleicao extends javax.swing.JFrame {
         BtnConfirma = new javax.swing.JButton();
         BtnBranco = new javax.swing.JButton();
         BtnNulo = new javax.swing.JButton();
-        lblTipoCand = new javax.swing.JLabel();
         txt1 = new javax.swing.JTextField();
         txt2 = new javax.swing.JTextField();
         txt3 = new javax.swing.JTextField();
         txt4 = new javax.swing.JTextField();
         txt5 = new javax.swing.JTextField();
-        lblTituloCand = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Eleição");
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        jLabel1.setText("ELEIÇÃO 2018");
+        eleicao2018.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        eleicao2018.setText("ELEIÇÃO 2018");
+
+        lblTipoCand.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTipoCand.setText("Deputado Federal");
+
+        lblTituloCand.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblTituloCand.setText("Nome do Cadidato:");
 
         Btn1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         Btn1.setText("1");
@@ -146,9 +152,6 @@ public class Eleicao extends javax.swing.JFrame {
 
         BtnNulo.setText("NULO");
 
-        lblTipoCand.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblTipoCand.setText("Deputado Federal");
-
         txt1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         txt1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,9 +186,6 @@ public class Eleicao extends javax.swing.JFrame {
                 txt5ActionPerformed(evt);
             }
         });
-
-        lblTituloCand.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblTituloCand.setText("Nome do Cadidato:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -236,14 +236,14 @@ public class Eleicao extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(274, 274, 274)
-                .addComponent(jLabel1)
+                .addComponent(eleicao2018)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(eleicao2018)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -576,7 +576,7 @@ public class Eleicao extends javax.swing.JFrame {
     private javax.swing.JButton BtnBranco;
     private javax.swing.JButton BtnConfirma;
     private javax.swing.JButton BtnNulo;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel eleicao2018;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblTipoCand;
     private javax.swing.JLabel lblTituloCand;

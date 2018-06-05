@@ -233,7 +233,7 @@ public class Governador extends javax.swing.JFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         JOptionPane.showMessageDialog(null, "SAINDO DO CADASTRO GOVERNADOR");
-        System.exit(1);
+        dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
