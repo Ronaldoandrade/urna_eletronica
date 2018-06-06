@@ -5,6 +5,14 @@
  */
 package urnaeletronica;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Vitor
@@ -27,21 +35,107 @@ public class DepEstadualConsulta extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        scrTabelaEstadual = new javax.swing.JScrollPane();
+        tblEstadual = new javax.swing.JTable();
+        btnListar = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        tblEstadual.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tblEstadual.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome", "Número", "Sigla do partido"
+            }
+        ));
+        scrTabelaEstadual.setViewportView(tblEstadual);
+
+        btnListar.setText("Listar os Deputados estaduais");
+        btnListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrTabelaEstadual, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnListar)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(108, Short.MAX_VALUE)
+                .addComponent(scrTabelaEstadual, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnListar)
+                .addGap(48, 48, 48))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+         //Definição dos dados de conexão
+        String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+        String usuario = "root";
+        String senha = "bluetooth007";
+        
+        //Definição da sql
+        String sql = "select * from depestadual";
+        
+        try{
+            //Captura uma conexão
+            Connection conexao = DriverManager.getConnection(url, usuario, senha);
+            
+            //Prepara o comando
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            
+            //Captura o resultado
+            ResultSet resultado = comando.executeQuery();
+            
+            //Captura o modelo da tabela
+            DefaultTableModel modelo = (DefaultTableModel)tblEstadual.getModel();
+            
+            //Percorre o resultado
+            while(resultado.next() == true){
+                //Captura os dados do registro corrente
+                String nome = resultado.getString("nome");
+                int numero = resultado.getInt("numero");
+                String siglaPartido = resultado.getString("siglaPartido");
+                
+                //Copia os dados para um vetor
+                Object[] linha = new Object[3];
+                linha[0] = nome;
+                linha[1] = numero;
+                linha[2] = siglaPartido;
+                
+                //Adiciona o vetor a tabela
+                modelo.addRow(linha);
+            }//fim while
+            
+            //liberar os recursos
+            resultado.close();
+            comando.close();
+            conexao.close();
+            
+            
+        }catch(SQLException erro){
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao tentar listar os deputados estaduais");
+            erro.printStackTrace();
+        }
+    }//GEN-LAST:event_btnListarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +173,8 @@ public class DepEstadualConsulta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnListar;
+    private javax.swing.JScrollPane scrTabelaEstadual;
+    private javax.swing.JTable tblEstadual;
     // End of variables declaration//GEN-END:variables
 }
