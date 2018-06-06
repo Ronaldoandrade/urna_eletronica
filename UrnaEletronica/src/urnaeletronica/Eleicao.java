@@ -5,21 +5,26 @@
  */
 package urnaeletronica;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Vitor
  */
 public class Eleicao extends javax.swing.JFrame {
-    
-    
 
     /**
      * Creates new form Eleicao
      */
     public Eleicao() {
         initComponents();
-        
-        
+
     }
 
     /**
@@ -53,6 +58,7 @@ public class Eleicao extends javax.swing.JFrame {
         txt3 = new javax.swing.JTextField();
         txt4 = new javax.swing.JTextField();
         txt5 = new javax.swing.JTextField();
+        lblNomeCandidato = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Eleição");
@@ -187,6 +193,8 @@ public class Eleicao extends javax.swing.JFrame {
             }
         });
 
+        lblNomeCandidato.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -209,8 +217,10 @@ public class Eleicao extends javax.swing.JFrame {
                         .addComponent(lblTipoCand))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addComponent(lblTituloCand)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                        .addComponent(lblTituloCand)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblNomeCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(BtnConfirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Btn7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -274,7 +284,9 @@ public class Eleicao extends javax.swing.JFrame {
                             .addComponent(Btn7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Btn0, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblTituloCand))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblTituloCand)
+                        .addComponent(lblNomeCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(BtnBranco, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -286,10 +298,10 @@ public class Eleicao extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,44 +316,120 @@ public class Eleicao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn1ActionPerformed
-        if (txt1.getText().equals("")){
+        if (txt1.getText().equals("")) {
             txt1.setText("1");
-        }else{
-            if (txt2.getText().equals("")){
+        } else {
+            if (txt2.getText().equals("")) {
                 txt2.setText("1");
-            }else 
-                if (txt3.getText().equals("")){
-                    txt3.setText("1");
-            }else
-                if (txt4.getText().equals("")){
-                    txt4.setText("1");
-            }else
-                if (txt5.getText().equals("")){
-                    txt5.setText("1");
-                    String busca;
-         //           busca = txt1+txt2+txt3+txt4+txt5;
+            } else if (txt3.getText().equals("")) {
+                txt3.setText("1");
+            } else if (txt4.getText().equals("")) {
+                txt4.setText("1");
+            } else if (txt5.getText().equals("")) {
+                txt5.setText("1");
+
+                String busca = txt1.getText() + txt2.getText() + txt3.getText() + txt4.getText() + txt5.getText();
+
+                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+                String usuario = "root";
+                String senha = "root";
+
+                // definição da sql
+                String sql = "SELECT * FROM DEPFEDERAL WHERE NUMERO=?";
+
+                try {
+                    //capitura uma conexão
+                    Connection conexao = DriverManager.getConnection(url, usuario, senha);
+
+                    // criar um comando
+                    PreparedStatement comando = conexao.prepareStatement(sql);
+
+                    // substituir as interrogações
+                    comando.setString(1, busca);
+
+                    //captura o redultado da consulta
+                    ResultSet resultado = comando.executeQuery();
+
+                    // verifica se retornou algo
+                    if (resultado.next() == true) {
+                        // extrai os dados
+                        String nome = resultado.getString("nome");
+                        lblNomeCandidato.setText(nome);
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Candidato não encontrado");
+                    }
+
+                    // libere recurso
+                    comando.close();
+                    conexao.close();
+
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "Erro ao buscar!!!");
+                    erro.printStackTrace();
                 }
+
+            }
         }
-            
-        
+
+
     }//GEN-LAST:event_Btn1ActionPerformed
 
     private void Btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn8ActionPerformed
-        if (txt1.getText().equals("")){
+        if (txt1.getText().equals("")) {
             txt1.setText("8");
-        }else{
-            if (txt2.getText().equals("")){
+        } else {
+            if (txt2.getText().equals("")) {
                 txt2.setText("8");
-            }else 
-                if (txt3.getText().equals("")){
-                    txt3.setText("8");
-            }else
-                if (txt4.getText().equals("")){
-                    txt4.setText("8");
-            }else
-                if (txt5.getText().equals("")){
-                    txt5.setText("8");
+            } else if (txt3.getText().equals("")) {
+                txt3.setText("8");
+            } else if (txt4.getText().equals("")) {
+                txt4.setText("8");
+            } else if (txt5.getText().equals("")) {
+                txt5.setText("8");
+
+                String busca = txt1.getText() + txt2.getText() + txt3.getText() + txt4.getText() + txt5.getText();
+
+                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+                String usuario = "root";
+                String senha = "root";
+
+                // definição da sql
+                String sql = "SELECT * FROM DEPFEDERAL WHERE NUMERO=?";
+
+                try {
+                    //capitura uma conexão
+                    Connection conexao = DriverManager.getConnection(url, usuario, senha);
+
+                    // criar um comando
+                    PreparedStatement comando = conexao.prepareStatement(sql);
+
+                    // substituir as interrogações
+                    comando.setString(1, busca);
+
+                    //captura o redultado da consulta
+                    ResultSet resultado = comando.executeQuery();
+
+                    // verifica se retornou algo
+                    if (resultado.next() == true) {
+                        // extrai os dados
+                        String nome = resultado.getString("nome");
+                        lblNomeCandidato.setText(nome);
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Candidato não encontrado");
+                    }
+
+                    // libere recurso
+                    comando.close();
+                    conexao.close();
+
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "Erro ao buscar!!!");
+                    erro.printStackTrace();
                 }
+
+            }
         }
     }//GEN-LAST:event_Btn8ActionPerformed
 
@@ -366,164 +454,470 @@ public class Eleicao extends javax.swing.JFrame {
     }//GEN-LAST:event_txt5ActionPerformed
 
     private void Btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn2ActionPerformed
-        if (txt1.getText().equals("")){
+        if (txt1.getText().equals("")) {
             txt1.setText("2");
-        }else{
-            if (txt2.getText().equals("")){
+        } else {
+            if (txt2.getText().equals("")) {
                 txt2.setText("2");
-            }else 
-                if (txt3.getText().equals("")){
-                    txt3.setText("2");
-            }else
-                if (txt4.getText().equals("")){
-                    txt4.setText("2");
-            }else
-                if (txt5.getText().equals("")){
-                    txt5.setText("2");
+            } else if (txt3.getText().equals("")) {
+                txt3.setText("2");
+            } else if (txt4.getText().equals("")) {
+                txt4.setText("2");
+            } else if (txt5.getText().equals("")) {
+                txt5.setText("2");
+
+                String busca = txt1.getText() + txt2.getText() + txt3.getText() + txt4.getText() + txt5.getText();
+
+                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+                String usuario = "root";
+                String senha = "root";
+
+                // definição da sql
+                String sql = "SELECT * FROM DEPFEDERAL WHERE NUMERO=?";
+
+                try {
+                    //capitura uma conexão
+                    Connection conexao = DriverManager.getConnection(url, usuario, senha);
+
+                    // criar um comando
+                    PreparedStatement comando = conexao.prepareStatement(sql);
+
+                    // substituir as interrogações
+                    comando.setString(1, busca);
+
+                    //captura o redultado da consulta
+                    ResultSet resultado = comando.executeQuery();
+
+                    // verifica se retornou algo
+                    if (resultado.next() == true) {
+                        // extrai os dados
+                        String nome = resultado.getString("nome");
+                        lblNomeCandidato.setText(nome);
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Candidato não encontrado");
+                    }
+
+                    // libere recurso
+                    comando.close();
+                    conexao.close();
+
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "Erro ao buscar!!!");
+                    erro.printStackTrace();
                 }
+
+            }
         }
     }//GEN-LAST:event_Btn2ActionPerformed
 
     private void Btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn3ActionPerformed
-        if (txt1.getText().equals("")){
+        if (txt1.getText().equals("")) {
             txt1.setText("3");
-        }else{
-            if (txt2.getText().equals("")){
+        } else {
+            if (txt2.getText().equals("")) {
                 txt2.setText("3");
-            }else 
-                if (txt3.getText().equals("")){
-                    txt3.setText("3");
-            }else
-                if (txt4.getText().equals("")){
-                    txt4.setText("3");
-            }else
-                if (txt5.getText().equals("")){
-                    txt5.setText("3");
+            } else if (txt3.getText().equals("")) {
+                txt3.setText("3");
+            } else if (txt4.getText().equals("")) {
+                txt4.setText("3");
+            } else if (txt5.getText().equals("")) {
+                txt5.setText("3");
+
+                String busca = txt1.getText() + txt2.getText() + txt3.getText() + txt4.getText() + txt5.getText();
+
+                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+                String usuario = "root";
+                String senha = "root";
+
+                // definição da sql
+                String sql = "SELECT * FROM DEPFEDERAL WHERE NUMERO=?";
+
+                try {
+                    //capitura uma conexão
+                    Connection conexao = DriverManager.getConnection(url, usuario, senha);
+
+                    // criar um comando
+                    PreparedStatement comando = conexao.prepareStatement(sql);
+
+                    // substituir as interrogações
+                    comando.setString(1, busca);
+
+                    //captura o redultado da consulta
+                    ResultSet resultado = comando.executeQuery();
+
+                    // verifica se retornou algo
+                    if (resultado.next() == true) {
+                        // extrai os dados
+                        String nome = resultado.getString("nome");
+                        lblNomeCandidato.setText(nome);
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Candidato não encontrado");
+                    }
+
+                    // libere recurso
+                    comando.close();
+                    conexao.close();
+
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "Erro ao buscar!!!");
+                    erro.printStackTrace();
                 }
-                   
-            
+
+            }
+
         }
     }//GEN-LAST:event_Btn3ActionPerformed
 
     private void Btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn4ActionPerformed
-        if (txt1.getText().equals("")){
+        if (txt1.getText().equals("")) {
             txt1.setText("4");
-        }else{
-            if (txt2.getText().equals("")){
+        } else {
+            if (txt2.getText().equals("")) {
                 txt2.setText("4");
-            }else 
-                if (txt3.getText().equals("")){
-                    txt3.setText("4");
-            }else
-                if (txt4.getText().equals("")){
-                    txt4.setText("4");
-            }else
-                if (txt5.getText().equals("")){
-                    txt5.setText("4");
+            } else if (txt3.getText().equals("")) {
+                txt3.setText("4");
+            } else if (txt4.getText().equals("")) {
+                txt4.setText("4");
+            } else if (txt5.getText().equals("")) {
+                txt5.setText("4");
+
+                String busca = txt1.getText() + txt2.getText() + txt3.getText() + txt4.getText() + txt5.getText();
+
+                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+                String usuario = "root";
+                String senha = "root";
+
+                // definição da sql
+                String sql = "SELECT * FROM DEPFEDERAL WHERE NUMERO=?";
+
+                try {
+                    //capitura uma conexão
+                    Connection conexao = DriverManager.getConnection(url, usuario, senha);
+
+                    // criar um comando
+                    PreparedStatement comando = conexao.prepareStatement(sql);
+
+                    // substituir as interrogações
+                    comando.setString(1, busca);
+
+                    //captura o redultado da consulta
+                    ResultSet resultado = comando.executeQuery();
+
+                    // verifica se retornou algo
+                    if (resultado.next() == true) {
+                        // extrai os dados
+                        String nome = resultado.getString("nome");
+                        lblNomeCandidato.setText(nome);
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Candidato não encontrado");
+                    }
+
+                    // libere recurso
+                    comando.close();
+                    conexao.close();
+
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "Erro ao buscar!!!");
+                    erro.printStackTrace();
                 }
+
+            }
         }
     }//GEN-LAST:event_Btn4ActionPerformed
 
     private void Btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn5ActionPerformed
-        if (txt1.getText().equals("")){
+        if (txt1.getText().equals("")) {
             txt1.setText("5");
-        }else{
-            if (txt2.getText().equals("")){
+        } else {
+            if (txt2.getText().equals("")) {
                 txt2.setText("5");
-            }else 
-                if (txt3.getText().equals("")){
-                    txt3.setText("5");
-            }else
-                if (txt4.getText().equals("")){
-                    txt4.setText("5");
-            }else
-                if (txt5.getText().equals("")){
-                    txt5.setText("5");
+            } else if (txt3.getText().equals("")) {
+                txt3.setText("5");
+            } else if (txt4.getText().equals("")) {
+                txt4.setText("5");
+            } else if (txt5.getText().equals("")) {
+                txt5.setText("5");
+
+                String busca = txt1.getText() + txt2.getText() + txt3.getText() + txt4.getText() + txt5.getText();
+
+                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+                String usuario = "root";
+                String senha = "root";
+
+                // definição da sql
+                String sql = "SELECT * FROM DEPFEDERAL WHERE NUMERO=?";
+
+                try {
+                    //capitura uma conexão
+                    Connection conexao = DriverManager.getConnection(url, usuario, senha);
+
+                    // criar um comando
+                    PreparedStatement comando = conexao.prepareStatement(sql);
+
+                    // substituir as interrogações
+                    comando.setString(1, busca);
+
+                    //captura o redultado da consulta
+                    ResultSet resultado = comando.executeQuery();
+
+                    // verifica se retornou algo
+                    if (resultado.next() == true) {
+                        // extrai os dados
+                        String nome = resultado.getString("nome");
+                        lblNomeCandidato.setText(nome);
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Candidato não encontrado");
+                    }
+
+                    // libere recurso
+                    comando.close();
+                    conexao.close();
+
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "Erro ao buscar!!!");
+                    erro.printStackTrace();
                 }
-                   
-            
+
+            }
+
         }
     }//GEN-LAST:event_Btn5ActionPerformed
 
     private void Btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn6ActionPerformed
-        if (txt1.getText().equals("")){
+        if (txt1.getText().equals("")) {
             txt1.setText("6");
-        }else{
-            if (txt2.getText().equals("")){
+        } else {
+            if (txt2.getText().equals("")) {
                 txt2.setText("6");
-            }else 
-                if (txt3.getText().equals("")){
-                    txt3.setText("6");
-            }else
-                if (txt4.getText().equals("")){
-                    txt4.setText("6");
-            }else
-                if (txt5.getText().equals("")){
-                    txt5.setText("6");
+            } else if (txt3.getText().equals("")) {
+                txt3.setText("6");
+            } else if (txt4.getText().equals("")) {
+                txt4.setText("6");
+            } else if (txt5.getText().equals("")) {
+                txt5.setText("6");
+
+                String busca = txt1.getText() + txt2.getText() + txt3.getText() + txt4.getText() + txt5.getText();
+
+                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+                String usuario = "root";
+                String senha = "root";
+
+                // definição da sql
+                String sql = "SELECT * FROM DEPFEDERAL WHERE NUMERO=?";
+
+                try {
+                    //capitura uma conexão
+                    Connection conexao = DriverManager.getConnection(url, usuario, senha);
+
+                    // criar um comando
+                    PreparedStatement comando = conexao.prepareStatement(sql);
+
+                    // substituir as interrogações
+                    comando.setString(1, busca);
+
+                    //captura o redultado da consulta
+                    ResultSet resultado = comando.executeQuery();
+
+                    // verifica se retornou algo
+                    if (resultado.next() == true) {
+                        // extrai os dados
+                        String nome = resultado.getString("nome");
+                        lblNomeCandidato.setText(nome);
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Candidato não encontrado");
+                    }
+
+                    // libere recurso
+                    comando.close();
+                    conexao.close();
+
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "Erro ao buscar!!!");
+                    erro.printStackTrace();
                 }
+
+            }
         }
     }//GEN-LAST:event_Btn6ActionPerformed
 
     private void Btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn7ActionPerformed
-        if (txt1.getText().equals("")){
+        if (txt1.getText().equals("")) {
             txt1.setText("7");
-        }else{
-            if (txt2.getText().equals("")){
+        } else {
+            if (txt2.getText().equals("")) {
                 txt2.setText("7");
-            }else 
-                if (txt3.getText().equals("")){
-                    txt3.setText("7");
-            }else
-                if (txt4.getText().equals("")){
-                    txt4.setText("7");
-            }else
-                if (txt5.getText().equals("")){
-                    txt5.setText("7");
+            } else if (txt3.getText().equals("")) {
+                txt3.setText("7");
+            } else if (txt4.getText().equals("")) {
+                txt4.setText("7");
+            } else if (txt5.getText().equals("")) {
+                txt5.setText("7");
+
+                String busca = txt1.getText() + txt2.getText() + txt3.getText() + txt4.getText() + txt5.getText();
+
+                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+                String usuario = "root";
+                String senha = "root";
+
+                // definição da sql
+                String sql = "SELECT * FROM DEPFEDERAL WHERE NUMERO=?";
+
+                try {
+                    //capitura uma conexão
+                    Connection conexao = DriverManager.getConnection(url, usuario, senha);
+
+                    // criar um comando
+                    PreparedStatement comando = conexao.prepareStatement(sql);
+
+                    // substituir as interrogações
+                    comando.setString(1, busca);
+
+                    //captura o redultado da consulta
+                    ResultSet resultado = comando.executeQuery();
+
+                    // verifica se retornou algo
+                    if (resultado.next() == true) {
+                        // extrai os dados
+                        String nome = resultado.getString("nome");
+                        lblNomeCandidato.setText(nome);
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Candidato não encontrado");
+                    }
+
+                    // libere recurso
+                    comando.close();
+                    conexao.close();
+
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "Erro ao buscar!!!");
+                    erro.printStackTrace();
                 }
-                   
-            
+
+            }
+
         }
     }//GEN-LAST:event_Btn7ActionPerformed
 
     private void Btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn9ActionPerformed
-        if (txt1.getText().equals("")){
+        if (txt1.getText().equals("")) {
             txt1.setText("9");
-        }else{
-            if (txt2.getText().equals("")){
+        } else {
+            if (txt2.getText().equals("")) {
                 txt2.setText("9");
-            }else 
-                if (txt3.getText().equals("")){
-                    txt3.setText("9");
-            }else
-                if (txt4.getText().equals("")){
-                    txt4.setText("9");
-            }else
-                if (txt5.getText().equals("")){
-                    txt5.setText("9");
+            } else if (txt3.getText().equals("")) {
+                txt3.setText("9");
+            } else if (txt4.getText().equals("")) {
+                txt4.setText("9");
+            } else if (txt5.getText().equals("")) {
+                txt5.setText("9");
+
+                String busca = txt1.getText() + txt2.getText() + txt3.getText() + txt4.getText() + txt5.getText();
+
+                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+                String usuario = "root";
+                String senha = "root";
+
+                // definição da sql
+                String sql = "SELECT * FROM DEPFEDERAL WHERE NUMERO=?";
+
+                try {
+                    //capitura uma conexão
+                    Connection conexao = DriverManager.getConnection(url, usuario, senha);
+
+                    // criar um comando
+                    PreparedStatement comando = conexao.prepareStatement(sql);
+
+                    // substituir as interrogações
+                    comando.setString(1, busca);
+
+                    //captura o redultado da consulta
+                    ResultSet resultado = comando.executeQuery();
+
+                    // verifica se retornou algo
+                    if (resultado.next() == true) {
+                        // extrai os dados
+                        String nome = resultado.getString("nome");
+                        lblNomeCandidato.setText(nome);
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Candidato não encontrado");
+                    }
+
+                    // libere recurso
+                    comando.close();
+                    conexao.close();
+
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "Erro ao buscar!!!");
+                    erro.printStackTrace();
                 }
-                   
-            
+
+            }
+
         }
     }//GEN-LAST:event_Btn9ActionPerformed
 
     private void Btn0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn0ActionPerformed
-        if (txt1.getText().equals("")){
+        if (txt1.getText().equals("")) {
             txt1.setText("0");
-        }else{
-            if (txt2.getText().equals("")){
+        } else {
+            if (txt2.getText().equals("")) {
                 txt2.setText("0");
-            }else 
-                if (txt3.getText().equals("")){
-                    txt3.setText("0");
-            }else
-                if (txt4.getText().equals("")){
-                    txt4.setText("0");
-            }else
-                if (txt5.getText().equals("")){
-                    txt5.setText("0");
-                    
-                    
+            } else if (txt3.getText().equals("")) {
+                txt3.setText("0");
+            } else if (txt4.getText().equals("")) {
+                txt4.setText("0");
+            } else if (txt5.getText().equals("")) {
+                txt5.setText("0");
+
+                String busca = txt1.getText() + txt2.getText() + txt3.getText() + txt4.getText() + txt5.getText();
+
+                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+                String usuario = "root";
+                String senha = "root";
+
+                // definição da sql
+                String sql = "SELECT * FROM DEPFEDERAL WHERE NUMERO=?";
+
+                try {
+                    //capitura uma conexão
+                    Connection conexao = DriverManager.getConnection(url, usuario, senha);
+
+                    // criar um comando
+                    PreparedStatement comando = conexao.prepareStatement(sql);
+
+                    // substituir as interrogações
+                    comando.setString(1, busca);
+
+                    //captura o redultado da consulta
+                    ResultSet resultado = comando.executeQuery();
+
+                    // verifica se retornou algo
+                    if (resultado.next() == true) {
+                        // extrai os dados
+                        String nome = resultado.getString("nome");
+                        lblNomeCandidato.setText(nome);
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Candidato não encontrado");
+                    }
+
+                    // libere recurso
+                    comando.close();
+                    conexao.close();
+
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "Erro ao buscar!!!");
+                    erro.printStackTrace();
                 }
+
+            }
         }
     }//GEN-LAST:event_Btn0ActionPerformed
 
@@ -578,6 +972,7 @@ public class Eleicao extends javax.swing.JFrame {
     private javax.swing.JButton BtnNulo;
     private javax.swing.JLabel eleicao2018;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblNomeCandidato;
     private javax.swing.JLabel lblTipoCand;
     private javax.swing.JLabel lblTituloCand;
     private javax.swing.JTextField txt1;
