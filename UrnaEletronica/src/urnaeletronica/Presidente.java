@@ -49,9 +49,11 @@ public class Presidente extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         txtSigla = new javax.swing.JTextField();
         txtFoto = new javax.swing.JTextField();
-        btnSalvar = new javax.swing.JButton();
-        btnSair = new javax.swing.JButton();
         btnAdicionar = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
+        btnSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro Presidente");
@@ -84,6 +86,13 @@ public class Presidente extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        btnAdicionar.setText("Adicionar foto");
+        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarActionPerformed(evt);
+            }
+        });
+
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,17 +100,24 @@ public class Presidente extends javax.swing.JFrame {
             }
         });
 
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
         btnSair.setText("Sair");
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSairActionPerformed(evt);
-            }
-        });
-
-        btnAdicionar.setText("Adicionar foto");
-        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdicionarActionPerformed(evt);
             }
         });
 
@@ -117,18 +133,6 @@ public class Presidente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtNome))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblFoto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jpnFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtFoto)
-                            .addComponent(btnAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnSalvar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(lblNumero)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNumero))
@@ -136,7 +140,24 @@ public class Presidente extends javax.swing.JFrame {
                         .addComponent(lblSigla)
                         .addGap(18, 18, 18)
                         .addComponent(txtSigla, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblFoto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jpnFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtFoto)
+                            .addComponent(btnAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
+                                    .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -172,9 +193,12 @@ public class Presidente extends javax.swing.JFrame {
                         .addComponent(btnAdicionar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSair)
-                            .addComponent(btnSalvar))))
-                .addContainerGap(41, Short.MAX_VALUE))
+                            .addComponent(btnSalvar)
+                            .addComponent(btnEditar)
+                            .addComponent(btnSair))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnExcluir)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -209,7 +233,7 @@ public class Presidente extends javax.swing.JFrame {
        comando.close();
        conexao.close();
        
-       JOptionPane.showMessageDialog(null,"Acesso permitido");
+       JOptionPane.showMessageDialog(null,"Salvo com sucesso");
        
        //Limpar os campos de inserção
             txtNumero.setText("");
@@ -221,7 +245,7 @@ public class Presidente extends javax.swing.JFrame {
             txtNumero.requestFocus();
             
        } catch(SQLException erro) {
-       JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados");
+       JOptionPane.showMessageDialog(null, "Não foi possível salvar o Presidente");
        erro.printStackTrace();
        }
     }//GEN-LAST:event_btnSalvarActionPerformed
@@ -253,6 +277,87 @@ public class Presidente extends javax.swing.JFrame {
                 
             }
     }//GEN-LAST:event_btnAdicionarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        int numero = Integer.parseInt(txtNumero.getText());
+        String nome = txtNome.getText();
+        String siglaPartido = txtSigla.getText();
+        String foto = txtFoto.getText();
+        
+        //Definição dos dadso da conexão
+        String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+        String usuario = "root";
+        String senha = "bluetooth007";
+        
+        //Definição da sql
+        String sql = "UPDATE presidente SET nome = ?, siglaPartido = ?, foto = ? where numero = ?";
+        
+        try{
+            //Captura uma conexão
+            Connection conexao = DriverManager.getConnection(url, usuario, senha);
+            
+            //Criar um comando
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            
+            //Substituir as interrogações (mapeamento objeto relacional)
+            comando.setString(1, nome);
+            comando.setString(2, siglaPartido);
+            comando.setString(3, foto);
+            comando.setInt(4, numero);
+            
+            //Executa o comando
+            comando.executeUpdate();
+            
+            //Libera os recursos
+            comando.close();
+            conexao.close();
+            
+            //Exibe uma mensagem de sucesso
+            JOptionPane.showMessageDialog(null, "Presidente editado com sucesso");
+            
+        }catch(SQLException erro){
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao tentar editar o Presidente");
+            erro.printStackTrace();
+        }
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        //Captura os dados digitados da tela
+        String nome = txtNome.getText();
+
+        //Definição dos dadso da conexão
+        String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+        String usuario = "root";
+        String senha = "bluetooth007";
+        
+        //Definição da sql
+        String sql = "DELETE from presidente where nome = ?";
+        
+        try{
+            //Captura uma conexão
+            Connection conexao = DriverManager.getConnection(url, usuario, senha);
+            
+            //Criar um comando
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            
+            //Substituir as interrogações (mapeamento objeto relacional)
+            comando.setString(1, nome);
+            
+            //Executa o comando
+            comando.executeUpdate();
+            
+            //Libera os recursos
+            comando.close();
+            conexao.close();
+            
+            //Exibe uma mensagem de sucesso
+            JOptionPane.showMessageDialog(null, "Presidente removido com sucesso");
+            
+        }catch(SQLException erro){
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao tentar excluir o Presidente");
+            erro.printStackTrace();
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,6 +396,8 @@ public class Presidente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JPanel jpnFoto;

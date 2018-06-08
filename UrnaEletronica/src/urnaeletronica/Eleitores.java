@@ -37,24 +37,24 @@ public class Eleitores extends javax.swing.JFrame {
 
         lblEleitor = new javax.swing.JLabel();
         lblInscricao = new javax.swing.JLabel();
-        txtInscricao = new javax.swing.JTextField();
         lblNome = new javax.swing.JLabel();
-        txtNome = new javax.swing.JTextField();
         lblNasc = new javax.swing.JLabel();
         lblZona = new javax.swing.JLabel();
-        txtZona = new javax.swing.JTextField();
         lblSecao = new javax.swing.JLabel();
-        txtSecao = new javax.swing.JTextField();
         lblEmissao = new javax.swing.JLabel();
-        txtEmissao = new javax.swing.JFormattedTextField();
-        txtNasc = new javax.swing.JFormattedTextField();
         lblMunicipio = new javax.swing.JLabel();
-        txtMunicipio = new javax.swing.JTextField();
         lblUnidade = new javax.swing.JLabel();
-        txtUnidade = new javax.swing.JTextField();
         lblPai = new javax.swing.JLabel();
-        txtPai = new javax.swing.JTextField();
         lblMae = new javax.swing.JLabel();
+        txtInscricao = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
+        txtNasc = new javax.swing.JFormattedTextField();
+        txtZona = new javax.swing.JTextField();
+        txtSecao = new javax.swing.JTextField();
+        txtEmissao = new javax.swing.JFormattedTextField();
+        txtMunicipio = new javax.swing.JTextField();
+        txtUnidade = new javax.swing.JTextField();
+        txtPai = new javax.swing.JTextField();
         txtMae = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
@@ -76,18 +76,6 @@ public class Eleitores extends javax.swing.JFrame {
 
         lblEmissao.setText("Data Emissao:");
 
-        try {
-            txtEmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        try {
-            txtNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
         lblMunicipio.setText("Municipio:");
 
         lblUnidade.setText("Unidade Federativa:");
@@ -95,6 +83,18 @@ public class Eleitores extends javax.swing.JFrame {
         lblPai.setText("Nome do Pai:");
 
         lblMae.setText("Nome da Mãe:");
+
+        try {
+            txtNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            txtEmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -123,9 +123,8 @@ public class Eleitores extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnSalvar)
-                                .addGap(35, 35, 35)
-                                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtMae)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(lblPai)
@@ -264,9 +263,11 @@ public class Eleitores extends javax.swing.JFrame {
         comando.executeUpdate();
         comando.close();
         conexao.close();
-        JOptionPane.showMessageDialog(null,"Acesso permitido");
+        
+        JOptionPane.showMessageDialog(null,"Salvo com sucesso");
+        
         }catch(SQLException erro){
-        JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados");
+        JOptionPane.showMessageDialog(null, "Não foi possível salvar o Eleitor");
         erro.printStackTrace();
         }
     }//GEN-LAST:event_btnSalvarActionPerformed

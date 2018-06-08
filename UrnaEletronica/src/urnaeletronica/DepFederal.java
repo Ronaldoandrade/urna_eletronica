@@ -49,9 +49,11 @@ public class DepFederal extends javax.swing.JFrame {
         txtNumero = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
         txtSigla = new javax.swing.JTextField();
+        btnAdd = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
-        btnAdicionar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro Dep. Federal");
@@ -84,6 +86,13 @@ public class DepFederal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        btnAdd.setText("Adicionar foto");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,17 +100,24 @@ public class DepFederal extends javax.swing.JFrame {
             }
         });
 
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
         btnSair.setText("Sair");
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSairActionPerformed(evt);
-            }
-        });
-
-        btnAdicionar.setText("Adicionar foto");
-        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdicionarActionPerformed(evt);
             }
         });
 
@@ -113,40 +129,44 @@ public class DepFederal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblSigla)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtSigla, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(lblFoto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jpnFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                                    .addComponent(txtFoto))
+                                .addContainerGap(153, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(14, 14, 14)
+                                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(20, 20, 20))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblNome)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtNome))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblNumero)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblFoto)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jpnFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btnAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                                            .addComponent(txtFoto))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnSalvar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33))))
+                                .addComponent(lblSigla)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtSigla, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblNome)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtNome))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblNumero)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addComponent(lblDepEst)
@@ -170,19 +190,21 @@ public class DepFederal extends javax.swing.JFrame {
                     .addComponent(txtSigla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblFoto)
-                        .addComponent(jpnFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblFoto)
+                    .addComponent(jpnFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addComponent(txtFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnAdicionar)
+                        .addComponent(btnAdd)
                         .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSair)
-                            .addComponent(btnSalvar))))
-                .addContainerGap(36, Short.MAX_VALUE))
+                            .addComponent(btnSalvar)
+                            .addComponent(btnEditar))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnExcluir)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -219,7 +241,7 @@ public class DepFederal extends javax.swing.JFrame {
        comando.close();
        conexao.close();
        
-       JOptionPane.showMessageDialog(null,"Acesso permitido");
+       JOptionPane.showMessageDialog(null,"Salvo com sucesso");
        
        //Limpar os campos de inserção
             txtNumero.setText("");
@@ -230,7 +252,7 @@ public class DepFederal extends javax.swing.JFrame {
             
             txtNumero.requestFocus();
        } catch(SQLException erro) {
-       JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados");
+       JOptionPane.showMessageDialog(null, "Não foi possível salvar o Deputado federal");
        erro.printStackTrace();
        }
     }//GEN-LAST:event_btnSalvarActionPerformed
@@ -240,7 +262,7 @@ public class DepFederal extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
-    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         JFileChooser buscarFoto = new JFileChooser();
             buscarFoto.setDialogTitle("Carregar imagem");
             buscarFoto.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -260,7 +282,88 @@ public class DepFederal extends javax.swing.JFrame {
                         lblFoto2.getHeight(), Image.SCALE_DEFAULT)));
                 
             }
-    }//GEN-LAST:event_btnAdicionarActionPerformed
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        int numero = Integer.parseInt(txtNumero.getText());
+        String nome = txtNome.getText();
+        String siglaPartido = txtSigla.getText();
+        String foto = txtFoto.getText();
+        
+        //Definição dos dadso da conexão
+        String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+        String usuario = "root";
+        String senha = "bluetooth007";
+        
+        //Definição da sql
+        String sql = "UPDATE depfederal SET nome = ?, siglaPartido = ?, foto = ? where numero = ?";
+        
+        try{
+            //Captura uma conexão
+            Connection conexao = DriverManager.getConnection(url, usuario, senha);
+            
+            //Criar um comando
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            
+            //Substituir as interrogações (mapeamento objeto relacional)
+            comando.setString(1, nome);
+            comando.setString(2, siglaPartido);
+            comando.setString(3, foto);
+            comando.setInt(4, numero);
+            
+            //Executa o comando
+            comando.executeUpdate();
+            
+            //Libera os recursos
+            comando.close();
+            conexao.close();
+            
+            //Exibe uma mensagem de sucesso
+            JOptionPane.showMessageDialog(null, "Deputado federal editado com sucesso");
+            
+        }catch(SQLException erro){
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao tentar editar o deputado federal");
+            erro.printStackTrace();
+        }
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        //Captura os dados digitados da tela
+        String nome = txtNome.getText();
+
+        //Definição dos dadso da conexão
+        String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+        String usuario = "root";
+        String senha = "bluetooth007";
+        
+        //Definição da sql
+        String sql = "DELETE from depfederal where nome = ?";
+        
+        try{
+            //Captura uma conexão
+            Connection conexao = DriverManager.getConnection(url, usuario, senha);
+            
+            //Criar um comando
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            
+            //Substituir as interrogações (mapeamento objeto relacional)
+            comando.setString(1, nome);
+            
+            //Executa o comando
+            comando.executeUpdate();
+            
+            //Libera os recursos
+            comando.close();
+            conexao.close();
+            
+            //Exibe uma mensagem de sucesso
+            JOptionPane.showMessageDialog(null, "Deputado Federal removido com sucesso");
+            
+        }catch(SQLException erro){
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao tentar excluir o Deputado Federal");
+            erro.printStackTrace();
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -298,7 +401,9 @@ public class DepFederal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdicionar;
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JPanel jpnFoto;

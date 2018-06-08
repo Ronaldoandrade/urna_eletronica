@@ -17,12 +17,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Vitor
  */
-public class DepEstadualConsulta extends javax.swing.JFrame {
+public class DepFederalConsulta extends javax.swing.JFrame {
 
     /**
-     * Creates new form DepEstadualConsulta
+     * Creates new form DepFederalConsulta
      */
-    public DepEstadualConsulta() {
+    public DepFederalConsulta() {
         initComponents();
     }
 
@@ -35,15 +35,15 @@ public class DepEstadualConsulta extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        scrTabelaEst = new javax.swing.JScrollPane();
-        tblEstadual = new javax.swing.JTable();
+        scrTabelaFed = new javax.swing.JScrollPane();
+        tblFederal = new javax.swing.JTable();
         btnListar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Consulta Deputado Estadual");
+        setTitle("Consulta Deputado Federal");
 
-        tblEstadual.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tblEstadual.setModel(new javax.swing.table.DefaultTableModel(
+        tblFederal.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tblFederal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -51,9 +51,9 @@ public class DepEstadualConsulta extends javax.swing.JFrame {
                 "Nome", "Número", "Sigla do Partido"
             }
         ));
-        scrTabelaEst.setViewportView(tblEstadual);
+        scrTabelaFed.setViewportView(tblFederal);
 
-        btnListar.setText("Listar os Deputados estaduais");
+        btnListar.setText("Listar todos Deputados Federais");
         btnListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnListarActionPerformed(evt);
@@ -67,7 +67,7 @@ public class DepEstadualConsulta extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrTabelaEst, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                    .addComponent(scrTabelaFed, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnListar)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -75,12 +75,12 @@ public class DepEstadualConsulta extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(108, Short.MAX_VALUE)
-                .addComponent(scrTabelaEst, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(102, 102, 102)
+                .addComponent(scrTabelaFed, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnListar)
-                .addGap(48, 48, 48))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         pack();
@@ -94,7 +94,7 @@ public class DepEstadualConsulta extends javax.swing.JFrame {
         String senha = "bluetooth007";
         
         //Definição da sql
-        String sql = "select * from depestadual";
+        String sql = "select * from depfederal";
         
         try{
             //Captura uma conexão
@@ -107,7 +107,7 @@ public class DepEstadualConsulta extends javax.swing.JFrame {
             ResultSet resultado = comando.executeQuery();
             
             //Captura o modelo da tabela
-            DefaultTableModel modelo = (DefaultTableModel)tblEstadual.getModel();
+            DefaultTableModel modelo = (DefaultTableModel)tblFederal.getModel();
             
             //Percorre o resultado
             while(resultado.next() == true){
@@ -133,7 +133,7 @@ public class DepEstadualConsulta extends javax.swing.JFrame {
             
             
         }catch(SQLException erro){
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao tentar listar os deputados estaduais");
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao tentar listar os deputados federais");
             erro.printStackTrace();
         }
     }//GEN-LAST:event_btnListarActionPerformed
@@ -155,27 +155,27 @@ public class DepEstadualConsulta extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DepEstadualConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepFederalConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DepEstadualConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepFederalConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DepEstadualConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepFederalConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DepEstadualConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DepFederalConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DepEstadualConsulta().setVisible(true);
+                new DepFederalConsulta().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnListar;
-    private javax.swing.JScrollPane scrTabelaEst;
-    private javax.swing.JTable tblEstadual;
+    private javax.swing.JScrollPane scrTabelaFed;
+    private javax.swing.JTable tblFederal;
     // End of variables declaration//GEN-END:variables
 }
