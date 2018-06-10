@@ -38,8 +38,7 @@ public class Eleicao extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         eleicao2018 = new javax.swing.JLabel();
-        lblTipoCand = new javax.swing.JLabel();
-        lblTituloCand = new javax.swing.JLabel();
+        lblCampo = new javax.swing.JLabel();
         Btn1 = new javax.swing.JButton();
         Btn2 = new javax.swing.JButton();
         Btn3 = new javax.swing.JButton();
@@ -50,15 +49,16 @@ public class Eleicao extends javax.swing.JFrame {
         Btn7 = new javax.swing.JButton();
         Btn9 = new javax.swing.JButton();
         Btn0 = new javax.swing.JButton();
-        BtnConfirma = new javax.swing.JButton();
         BtnBranco = new javax.swing.JButton();
         BtnNulo = new javax.swing.JButton();
-        txt1 = new javax.swing.JTextField();
-        txt2 = new javax.swing.JTextField();
-        txt3 = new javax.swing.JTextField();
-        txt4 = new javax.swing.JTextField();
-        txt5 = new javax.swing.JTextField();
-        lblNomeCandidato = new javax.swing.JLabel();
+        btnCorfirma = new javax.swing.JButton();
+        lblCargo = new javax.swing.JLabel();
+        lblFoto1 = new javax.swing.JLabel();
+        lbl1 = new javax.swing.JLabel();
+        lbl2 = new javax.swing.JLabel();
+        lbl3 = new javax.swing.JLabel();
+        lbl4 = new javax.swing.JLabel();
+        lbl5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Eleição");
@@ -66,134 +66,46 @@ public class Eleicao extends javax.swing.JFrame {
         eleicao2018.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         eleicao2018.setText("ELEIÇÃO 2018");
 
-        lblTipoCand.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblTipoCand.setText("Deputado Federal");
-
-        lblTituloCand.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblTituloCand.setText("Nome do Cadidato:");
+        lblCampo.setText("   ");
 
         Btn1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         Btn1.setText("1");
-        Btn1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn1ActionPerformed(evt);
-            }
-        });
 
         Btn2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         Btn2.setText("2");
-        Btn2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn2ActionPerformed(evt);
-            }
-        });
 
         Btn3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         Btn3.setText("3");
-        Btn3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn3ActionPerformed(evt);
-            }
-        });
 
         Btn4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         Btn4.setText("4");
-        Btn4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn4ActionPerformed(evt);
-            }
-        });
 
         Btn5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         Btn5.setText("5");
-        Btn5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn5ActionPerformed(evt);
-            }
-        });
 
         Btn6.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         Btn6.setText("6");
-        Btn6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn6ActionPerformed(evt);
-            }
-        });
 
         Btn8.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         Btn8.setText("8");
-        Btn8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn8ActionPerformed(evt);
-            }
-        });
 
         Btn7.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         Btn7.setText("7");
-        Btn7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn7ActionPerformed(evt);
-            }
-        });
 
         Btn9.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         Btn9.setText("9");
-        Btn9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn9ActionPerformed(evt);
-            }
-        });
 
         Btn0.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         Btn0.setText("0");
-        Btn0.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn0ActionPerformed(evt);
-            }
-        });
-
-        BtnConfirma.setText("CONFIRMA");
 
         BtnBranco.setText("BRANO");
 
         BtnNulo.setText("NULO");
 
-        txt1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        txt1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt1ActionPerformed(evt);
-            }
-        });
+        btnCorfirma.setText("CONFIRMAR");
 
-        txt2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        txt2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt2ActionPerformed(evt);
-            }
-        });
-
-        txt3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        txt3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt3ActionPerformed(evt);
-            }
-        });
-
-        txt4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        txt4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt4ActionPerformed(evt);
-            }
-        });
-
-        txt5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        txt5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt5ActionPerformed(evt);
-            }
-        });
-
-        lblNomeCandidato.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblCargo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblCargo.setText("DEPUTADO ESTADUAL");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -202,52 +114,47 @@ public class Eleicao extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txt2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txt3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txt4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txt5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addComponent(lblCargo)
+                        .addGap(48, 48, 48)
+                        .addComponent(lblFoto1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(lblTipoCand))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(lblTituloCand)
+                        .addGap(27, 27, 27)
+                        .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblNomeCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                        .addComponent(lbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbl3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbl4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblCampo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(BtnConfirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Btn7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Btn1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Btn4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Btn4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BtnBranco, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Btn0, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                            .addComponent(Btn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Btn5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Btn8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Btn6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                            .addComponent(Btn3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Btn9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(BtnBranco, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BtnNulo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Btn0, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                    .addComponent(Btn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Btn5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Btn8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BtnNulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Btn6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Btn3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Btn9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCorfirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(274, 274, 274)
                 .addComponent(eleicao2018)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(283, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,43 +162,47 @@ public class Eleicao extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(eleicao2018)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTipoCand))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lbl5, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbl2, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                                .addComponent(lbl3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbl4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(100, 100, 100)
+                                .addComponent(lblCargo))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(69, 69, 69)
+                                .addComponent(lblFoto1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Btn5, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
                             .addComponent(Btn6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Btn4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(Btn4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Btn9, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
                             .addComponent(Btn8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Btn7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Btn0, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblTituloCand)
-                        .addComponent(lblNomeCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BtnBranco, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnConfirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BtnNulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(Btn0, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BtnNulo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BtnBranco, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCorfirma, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblCampo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -308,618 +219,12 @@ public class Eleicao extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn1ActionPerformed
-        if (txt1.getText().equals("")) {
-            txt1.setText("1");
-        } else {
-            if (txt2.getText().equals("")) {
-                txt2.setText("1");
-            } else if (txt3.getText().equals("")) {
-                txt3.setText("1");
-            } else if (txt4.getText().equals("")) {
-                txt4.setText("1");
-            } else if (txt5.getText().equals("")) {
-                txt5.setText("1");
-
-                String busca = txt1.getText() + txt2.getText() + txt3.getText() + txt4.getText() + txt5.getText();
-
-                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
-                String usuario = "root";
-                String senha = "root";
-
-                // definição da sql
-                String sql = "SELECT * FROM DEPFEDERAL WHERE NUMERO=?";
-
-                try {
-                    //capitura uma conexão
-                    Connection conexao = DriverManager.getConnection(url, usuario, senha);
-
-                    // criar um comando
-                    PreparedStatement comando = conexao.prepareStatement(sql);
-
-                    // substituir as interrogações
-                    comando.setString(1, busca);
-
-                    //captura o redultado da consulta
-                    ResultSet resultado = comando.executeQuery();
-
-                    // verifica se retornou algo
-                    if (resultado.next() == true) {
-                        // extrai os dados
-                        String nome = resultado.getString("nome");
-                        lblNomeCandidato.setText(nome);
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Candidato não encontrado");
-                    }
-
-                    // libere recurso
-                    comando.close();
-                    conexao.close();
-
-                } catch (SQLException erro) {
-                    JOptionPane.showMessageDialog(null, "Erro ao buscar!!!");
-                    erro.printStackTrace();
-                }
-
-            }
-        }
-
-
-    }//GEN-LAST:event_Btn1ActionPerformed
-
-    private void Btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn8ActionPerformed
-        if (txt1.getText().equals("")) {
-            txt1.setText("8");
-        } else {
-            if (txt2.getText().equals("")) {
-                txt2.setText("8");
-            } else if (txt3.getText().equals("")) {
-                txt3.setText("8");
-            } else if (txt4.getText().equals("")) {
-                txt4.setText("8");
-            } else if (txt5.getText().equals("")) {
-                txt5.setText("8");
-
-                String busca = txt1.getText() + txt2.getText() + txt3.getText() + txt4.getText() + txt5.getText();
-
-                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
-                String usuario = "root";
-                String senha = "root";
-
-                // definição da sql
-                String sql = "SELECT * FROM DEPFEDERAL WHERE NUMERO=?";
-
-                try {
-                    //capitura uma conexão
-                    Connection conexao = DriverManager.getConnection(url, usuario, senha);
-
-                    // criar um comando
-                    PreparedStatement comando = conexao.prepareStatement(sql);
-
-                    // substituir as interrogações
-                    comando.setString(1, busca);
-
-                    //captura o redultado da consulta
-                    ResultSet resultado = comando.executeQuery();
-
-                    // verifica se retornou algo
-                    if (resultado.next() == true) {
-                        // extrai os dados
-                        String nome = resultado.getString("nome");
-                        lblNomeCandidato.setText(nome);
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Candidato não encontrado");
-                    }
-
-                    // libere recurso
-                    comando.close();
-                    conexao.close();
-
-                } catch (SQLException erro) {
-                    JOptionPane.showMessageDialog(null, "Erro ao buscar!!!");
-                    erro.printStackTrace();
-                }
-
-            }
-        }
-    }//GEN-LAST:event_Btn8ActionPerformed
-
-    private void txt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt1ActionPerformed
-
-    private void txt2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt2ActionPerformed
-
-    private void txt3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt3ActionPerformed
-
-    private void txt4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt4ActionPerformed
-
-    private void txt5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt5ActionPerformed
-
-    private void Btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn2ActionPerformed
-        if (txt1.getText().equals("")) {
-            txt1.setText("2");
-        } else {
-            if (txt2.getText().equals("")) {
-                txt2.setText("2");
-            } else if (txt3.getText().equals("")) {
-                txt3.setText("2");
-            } else if (txt4.getText().equals("")) {
-                txt4.setText("2");
-            } else if (txt5.getText().equals("")) {
-                txt5.setText("2");
-
-                String busca = txt1.getText() + txt2.getText() + txt3.getText() + txt4.getText() + txt5.getText();
-
-                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
-                String usuario = "root";
-                String senha = "root";
-
-                // definição da sql
-                String sql = "SELECT * FROM DEPFEDERAL WHERE NUMERO=?";
-
-                try {
-                    //capitura uma conexão
-                    Connection conexao = DriverManager.getConnection(url, usuario, senha);
-
-                    // criar um comando
-                    PreparedStatement comando = conexao.prepareStatement(sql);
-
-                    // substituir as interrogações
-                    comando.setString(1, busca);
-
-                    //captura o redultado da consulta
-                    ResultSet resultado = comando.executeQuery();
-
-                    // verifica se retornou algo
-                    if (resultado.next() == true) {
-                        // extrai os dados
-                        String nome = resultado.getString("nome");
-                        lblNomeCandidato.setText(nome);
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Candidato não encontrado");
-                    }
-
-                    // libere recurso
-                    comando.close();
-                    conexao.close();
-
-                } catch (SQLException erro) {
-                    JOptionPane.showMessageDialog(null, "Erro ao buscar!!!");
-                    erro.printStackTrace();
-                }
-
-            }
-        }
-    }//GEN-LAST:event_Btn2ActionPerformed
-
-    private void Btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn3ActionPerformed
-        if (txt1.getText().equals("")) {
-            txt1.setText("3");
-        } else {
-            if (txt2.getText().equals("")) {
-                txt2.setText("3");
-            } else if (txt3.getText().equals("")) {
-                txt3.setText("3");
-            } else if (txt4.getText().equals("")) {
-                txt4.setText("3");
-            } else if (txt5.getText().equals("")) {
-                txt5.setText("3");
-
-                String busca = txt1.getText() + txt2.getText() + txt3.getText() + txt4.getText() + txt5.getText();
-
-                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
-                String usuario = "root";
-                String senha = "root";
-
-                // definição da sql
-                String sql = "SELECT * FROM DEPFEDERAL WHERE NUMERO=?";
-
-                try {
-                    //capitura uma conexão
-                    Connection conexao = DriverManager.getConnection(url, usuario, senha);
-
-                    // criar um comando
-                    PreparedStatement comando = conexao.prepareStatement(sql);
-
-                    // substituir as interrogações
-                    comando.setString(1, busca);
-
-                    //captura o redultado da consulta
-                    ResultSet resultado = comando.executeQuery();
-
-                    // verifica se retornou algo
-                    if (resultado.next() == true) {
-                        // extrai os dados
-                        String nome = resultado.getString("nome");
-                        lblNomeCandidato.setText(nome);
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Candidato não encontrado");
-                    }
-
-                    // libere recurso
-                    comando.close();
-                    conexao.close();
-
-                } catch (SQLException erro) {
-                    JOptionPane.showMessageDialog(null, "Erro ao buscar!!!");
-                    erro.printStackTrace();
-                }
-
-            }
-
-        }
-    }//GEN-LAST:event_Btn3ActionPerformed
-
-    private void Btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn4ActionPerformed
-        if (txt1.getText().equals("")) {
-            txt1.setText("4");
-        } else {
-            if (txt2.getText().equals("")) {
-                txt2.setText("4");
-            } else if (txt3.getText().equals("")) {
-                txt3.setText("4");
-            } else if (txt4.getText().equals("")) {
-                txt4.setText("4");
-            } else if (txt5.getText().equals("")) {
-                txt5.setText("4");
-
-                String busca = txt1.getText() + txt2.getText() + txt3.getText() + txt4.getText() + txt5.getText();
-
-                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
-                String usuario = "root";
-                String senha = "root";
-
-                // definição da sql
-                String sql = "SELECT * FROM DEPFEDERAL WHERE NUMERO=?";
-
-                try {
-                    //capitura uma conexão
-                    Connection conexao = DriverManager.getConnection(url, usuario, senha);
-
-                    // criar um comando
-                    PreparedStatement comando = conexao.prepareStatement(sql);
-
-                    // substituir as interrogações
-                    comando.setString(1, busca);
-
-                    //captura o redultado da consulta
-                    ResultSet resultado = comando.executeQuery();
-
-                    // verifica se retornou algo
-                    if (resultado.next() == true) {
-                        // extrai os dados
-                        String nome = resultado.getString("nome");
-                        lblNomeCandidato.setText(nome);
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Candidato não encontrado");
-                    }
-
-                    // libere recurso
-                    comando.close();
-                    conexao.close();
-
-                } catch (SQLException erro) {
-                    JOptionPane.showMessageDialog(null, "Erro ao buscar!!!");
-                    erro.printStackTrace();
-                }
-
-            }
-        }
-    }//GEN-LAST:event_Btn4ActionPerformed
-
-    private void Btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn5ActionPerformed
-        if (txt1.getText().equals("")) {
-            txt1.setText("5");
-        } else {
-            if (txt2.getText().equals("")) {
-                txt2.setText("5");
-            } else if (txt3.getText().equals("")) {
-                txt3.setText("5");
-            } else if (txt4.getText().equals("")) {
-                txt4.setText("5");
-            } else if (txt5.getText().equals("")) {
-                txt5.setText("5");
-
-                String busca = txt1.getText() + txt2.getText() + txt3.getText() + txt4.getText() + txt5.getText();
-
-                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
-                String usuario = "root";
-                String senha = "root";
-
-                // definição da sql
-                String sql = "SELECT * FROM DEPFEDERAL WHERE NUMERO=?";
-
-                try {
-                    //capitura uma conexão
-                    Connection conexao = DriverManager.getConnection(url, usuario, senha);
-
-                    // criar um comando
-                    PreparedStatement comando = conexao.prepareStatement(sql);
-
-                    // substituir as interrogações
-                    comando.setString(1, busca);
-
-                    //captura o redultado da consulta
-                    ResultSet resultado = comando.executeQuery();
-
-                    // verifica se retornou algo
-                    if (resultado.next() == true) {
-                        // extrai os dados
-                        String nome = resultado.getString("nome");
-                        lblNomeCandidato.setText(nome);
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Candidato não encontrado");
-                    }
-
-                    // libere recurso
-                    comando.close();
-                    conexao.close();
-
-                } catch (SQLException erro) {
-                    JOptionPane.showMessageDialog(null, "Erro ao buscar!!!");
-                    erro.printStackTrace();
-                }
-
-            }
-
-        }
-    }//GEN-LAST:event_Btn5ActionPerformed
-
-    private void Btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn6ActionPerformed
-        if (txt1.getText().equals("")) {
-            txt1.setText("6");
-        } else {
-            if (txt2.getText().equals("")) {
-                txt2.setText("6");
-            } else if (txt3.getText().equals("")) {
-                txt3.setText("6");
-            } else if (txt4.getText().equals("")) {
-                txt4.setText("6");
-            } else if (txt5.getText().equals("")) {
-                txt5.setText("6");
-
-                String busca = txt1.getText() + txt2.getText() + txt3.getText() + txt4.getText() + txt5.getText();
-
-                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
-                String usuario = "root";
-                String senha = "root";
-
-                // definição da sql
-                String sql = "SELECT * FROM DEPFEDERAL WHERE NUMERO=?";
-
-                try {
-                    //capitura uma conexão
-                    Connection conexao = DriverManager.getConnection(url, usuario, senha);
-
-                    // criar um comando
-                    PreparedStatement comando = conexao.prepareStatement(sql);
-
-                    // substituir as interrogações
-                    comando.setString(1, busca);
-
-                    //captura o redultado da consulta
-                    ResultSet resultado = comando.executeQuery();
-
-                    // verifica se retornou algo
-                    if (resultado.next() == true) {
-                        // extrai os dados
-                        String nome = resultado.getString("nome");
-                        lblNomeCandidato.setText(nome);
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Candidato não encontrado");
-                    }
-
-                    // libere recurso
-                    comando.close();
-                    conexao.close();
-
-                } catch (SQLException erro) {
-                    JOptionPane.showMessageDialog(null, "Erro ao buscar!!!");
-                    erro.printStackTrace();
-                }
-
-            }
-        }
-    }//GEN-LAST:event_Btn6ActionPerformed
-
-    private void Btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn7ActionPerformed
-        if (txt1.getText().equals("")) {
-            txt1.setText("7");
-        } else {
-            if (txt2.getText().equals("")) {
-                txt2.setText("7");
-            } else if (txt3.getText().equals("")) {
-                txt3.setText("7");
-            } else if (txt4.getText().equals("")) {
-                txt4.setText("7");
-            } else if (txt5.getText().equals("")) {
-                txt5.setText("7");
-
-                String busca = txt1.getText() + txt2.getText() + txt3.getText() + txt4.getText() + txt5.getText();
-
-                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
-                String usuario = "root";
-                String senha = "root";
-
-                // definição da sql
-                String sql = "SELECT * FROM DEPFEDERAL WHERE NUMERO=?";
-
-                try {
-                    //capitura uma conexão
-                    Connection conexao = DriverManager.getConnection(url, usuario, senha);
-
-                    // criar um comando
-                    PreparedStatement comando = conexao.prepareStatement(sql);
-
-                    // substituir as interrogações
-                    comando.setString(1, busca);
-
-                    //captura o redultado da consulta
-                    ResultSet resultado = comando.executeQuery();
-
-                    // verifica se retornou algo
-                    if (resultado.next() == true) {
-                        // extrai os dados
-                        String nome = resultado.getString("nome");
-                        lblNomeCandidato.setText(nome);
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Candidato não encontrado");
-                    }
-
-                    // libere recurso
-                    comando.close();
-                    conexao.close();
-
-                } catch (SQLException erro) {
-                    JOptionPane.showMessageDialog(null, "Erro ao buscar!!!");
-                    erro.printStackTrace();
-                }
-
-            }
-
-        }
-    }//GEN-LAST:event_Btn7ActionPerformed
-
-    private void Btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn9ActionPerformed
-        if (txt1.getText().equals("")) {
-            txt1.setText("9");
-        } else {
-            if (txt2.getText().equals("")) {
-                txt2.setText("9");
-            } else if (txt3.getText().equals("")) {
-                txt3.setText("9");
-            } else if (txt4.getText().equals("")) {
-                txt4.setText("9");
-            } else if (txt5.getText().equals("")) {
-                txt5.setText("9");
-
-                String busca = txt1.getText() + txt2.getText() + txt3.getText() + txt4.getText() + txt5.getText();
-
-                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
-                String usuario = "root";
-                String senha = "root";
-
-                // definição da sql
-                String sql = "SELECT * FROM DEPFEDERAL WHERE NUMERO=?";
-
-                try {
-                    //capitura uma conexão
-                    Connection conexao = DriverManager.getConnection(url, usuario, senha);
-
-                    // criar um comando
-                    PreparedStatement comando = conexao.prepareStatement(sql);
-
-                    // substituir as interrogações
-                    comando.setString(1, busca);
-
-                    //captura o redultado da consulta
-                    ResultSet resultado = comando.executeQuery();
-
-                    // verifica se retornou algo
-                    if (resultado.next() == true) {
-                        // extrai os dados
-                        String nome = resultado.getString("nome");
-                        lblNomeCandidato.setText(nome);
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Candidato não encontrado");
-                    }
-
-                    // libere recurso
-                    comando.close();
-                    conexao.close();
-
-                } catch (SQLException erro) {
-                    JOptionPane.showMessageDialog(null, "Erro ao buscar!!!");
-                    erro.printStackTrace();
-                }
-
-            }
-
-        }
-    }//GEN-LAST:event_Btn9ActionPerformed
-
-    private void Btn0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn0ActionPerformed
-        if (txt1.getText().equals("")) {
-            txt1.setText("0");
-        } else {
-            if (txt2.getText().equals("")) {
-                txt2.setText("0");
-            } else if (txt3.getText().equals("")) {
-                txt3.setText("0");
-            } else if (txt4.getText().equals("")) {
-                txt4.setText("0");
-            } else if (txt5.getText().equals("")) {
-                txt5.setText("0");
-
-                String busca = txt1.getText() + txt2.getText() + txt3.getText() + txt4.getText() + txt5.getText();
-
-                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
-                String usuario = "root";
-                String senha = "root";
-
-                // definição da sql
-                String sql = "SELECT * FROM DEPFEDERAL WHERE NUMERO=?";
-
-                try {
-                    //capitura uma conexão
-                    Connection conexao = DriverManager.getConnection(url, usuario, senha);
-
-                    // criar um comando
-                    PreparedStatement comando = conexao.prepareStatement(sql);
-
-                    // substituir as interrogações
-                    comando.setString(1, busca);
-
-                    //captura o redultado da consulta
-                    ResultSet resultado = comando.executeQuery();
-
-                    // verifica se retornou algo
-                    if (resultado.next() == true) {
-                        // extrai os dados
-                        String nome = resultado.getString("nome");
-                        lblNomeCandidato.setText(nome);
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Candidato não encontrado");
-                    }
-
-                    // libere recurso
-                    comando.close();
-                    conexao.close();
-
-                } catch (SQLException erro) {
-                    JOptionPane.showMessageDialog(null, "Erro ao buscar!!!");
-                    erro.printStackTrace();
-                }
-
-            }
-        }
-    }//GEN-LAST:event_Btn0ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -968,17 +273,17 @@ public class Eleicao extends javax.swing.JFrame {
     private javax.swing.JButton Btn8;
     private javax.swing.JButton Btn9;
     private javax.swing.JButton BtnBranco;
-    private javax.swing.JButton BtnConfirma;
     private javax.swing.JButton BtnNulo;
+    private javax.swing.JButton btnCorfirma;
     private javax.swing.JLabel eleicao2018;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblNomeCandidato;
-    private javax.swing.JLabel lblTipoCand;
-    private javax.swing.JLabel lblTituloCand;
-    private javax.swing.JTextField txt1;
-    private javax.swing.JTextField txt2;
-    private javax.swing.JTextField txt3;
-    private javax.swing.JTextField txt4;
-    private javax.swing.JTextField txt5;
+    private javax.swing.JLabel lbl1;
+    private javax.swing.JLabel lbl2;
+    private javax.swing.JLabel lbl3;
+    private javax.swing.JLabel lbl4;
+    private javax.swing.JLabel lbl5;
+    private javax.swing.JLabel lblCampo;
+    private javax.swing.JLabel lblCargo;
+    private javax.swing.JLabel lblFoto1;
     // End of variables declaration//GEN-END:variables
 }
