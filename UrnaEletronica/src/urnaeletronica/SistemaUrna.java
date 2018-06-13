@@ -85,6 +85,11 @@ public class SistemaUrna extends javax.swing.JFrame {
         MnGovernador.add(ImnCadastGovernador);
 
         ImnConsGovernador.setText("Consulta");
+        ImnConsGovernador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ImnConsGovernadorActionPerformed(evt);
+            }
+        });
         MnGovernador.add(ImnConsGovernador);
 
         jMenuBar1.add(MnGovernador);
@@ -100,6 +105,11 @@ public class SistemaUrna extends javax.swing.JFrame {
         MnSenador.add(ImnCadastSenador);
 
         ImnConsSenador.setText("Consulta");
+        ImnConsSenador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ImnConsSenadorActionPerformed(evt);
+            }
+        });
         MnSenador.add(ImnConsSenador);
 
         jMenuBar1.add(MnSenador);
@@ -107,9 +117,19 @@ public class SistemaUrna extends javax.swing.JFrame {
         MnDepFederam.setText("Deputado Federal");
 
         ImnCadastDepFederal.setText("Novo");
+        ImnCadastDepFederal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ImnCadastDepFederalActionPerformed(evt);
+            }
+        });
         MnDepFederam.add(ImnCadastDepFederal);
 
         ImnConsDepFederal.setText("Consulta");
+        ImnConsDepFederal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ImnConsDepFederalActionPerformed(evt);
+            }
+        });
         MnDepFederam.add(ImnConsDepFederal);
 
         jMenuBar1.add(MnDepFederam);
@@ -117,9 +137,19 @@ public class SistemaUrna extends javax.swing.JFrame {
         MnDepEstadual.setText("Deputado Estadual");
 
         ImnCadastDepEstadual.setText("Novo");
+        ImnCadastDepEstadual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ImnCadastDepEstadualActionPerformed(evt);
+            }
+        });
         MnDepEstadual.add(ImnCadastDepEstadual);
 
         ImnConsultaDepEstadual.setText("Consulta");
+        ImnConsultaDepEstadual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ImnConsultaDepEstadualActionPerformed(evt);
+            }
+        });
         MnDepEstadual.add(ImnConsultaDepEstadual);
 
         jMenuBar1.add(MnDepEstadual);
@@ -127,6 +157,11 @@ public class SistemaUrna extends javax.swing.JFrame {
         MnEleitor.setText("Eleitor");
 
         ImnCadastEleitor.setText("Novo");
+        ImnCadastEleitor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ImnCadastEleitorActionPerformed(evt);
+            }
+        });
         MnEleitor.add(ImnCadastEleitor);
 
         ImnConsEleitor.setText("Consulta");
@@ -182,13 +217,49 @@ public class SistemaUrna extends javax.swing.JFrame {
     }//GEN-LAST:event_ImnCadastSenadorActionPerformed
 
     private void ImnConsPrasidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImnConsPrasidenteActionPerformed
-        // TODO add your handling code here:
+        PresidenteConsulta tela = new PresidenteConsulta();
+        tela.setVisible(true);
     }//GEN-LAST:event_ImnConsPrasidenteActionPerformed
 
     private void MnIniciarEleicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnIniciarEleicaoActionPerformed
         Eleicao tela = new Eleicao();
         tela.setVisible(true);
     }//GEN-LAST:event_MnIniciarEleicaoActionPerformed
+
+    private void ImnConsGovernadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImnConsGovernadorActionPerformed
+        GovernadorConsulta tela = new GovernadorConsulta();
+        tela.setVisible(true);
+    }//GEN-LAST:event_ImnConsGovernadorActionPerformed
+
+    private void ImnConsSenadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImnConsSenadorActionPerformed
+        SenadorConsulta tela = new SenadorConsulta();
+        tela.setVisible(true);
+    }//GEN-LAST:event_ImnConsSenadorActionPerformed
+
+    private void ImnCadastDepFederalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImnCadastDepFederalActionPerformed
+        DepFederal tela = new DepFederal();
+        tela.setVisible(true);
+    }//GEN-LAST:event_ImnCadastDepFederalActionPerformed
+
+    private void ImnConsDepFederalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImnConsDepFederalActionPerformed
+        DepFederalConsulta tela = new DepFederalConsulta();
+        tela.setVisible(true);
+    }//GEN-LAST:event_ImnConsDepFederalActionPerformed
+
+    private void ImnCadastDepEstadualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImnCadastDepEstadualActionPerformed
+        DepEstadual tela = new DepEstadual();
+        tela.setVisible(true);
+    }//GEN-LAST:event_ImnCadastDepEstadualActionPerformed
+
+    private void ImnConsultaDepEstadualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImnConsultaDepEstadualActionPerformed
+        DepEstadualConsulta tela = new DepEstadualConsulta();
+        tela.setVisible(true);
+    }//GEN-LAST:event_ImnConsultaDepEstadualActionPerformed
+
+    private void ImnCadastEleitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImnCadastEleitorActionPerformed
+        Eleitores tela = new Eleitores();
+        tela.setVisible(true);
+    }//GEN-LAST:event_ImnCadastEleitorActionPerformed
 
     /**
      * @param args the command line arguments
