@@ -134,12 +134,17 @@ public class SistemaUrna extends javax.swing.JFrame {
 
         jMenuBar1.add(MnEleitor);
 
-        MnEleicao.setText("EleiÃ§Ã£o");
+        MnEleicao.setText("Eleição");
 
-        MnIniciarEleicao.setText("Iniciar VotaÃ§Ã£o");
+        MnIniciarEleicao.setText("Iniciar Votação");
+        MnIniciarEleicao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnIniciarEleicaoActionPerformed(evt);
+            }
+        });
         MnEleicao.add(MnIniciarEleicao);
 
-        MnRelatorioEleicao.setText("RelatÃ³rio EleiÃ§Ã£o");
+        MnRelatorioEleicao.setText("Relatório Eleição");
         MnEleicao.add(MnRelatorioEleicao);
 
         jMenuBar1.add(MnEleicao);
@@ -179,6 +184,11 @@ public class SistemaUrna extends javax.swing.JFrame {
     private void ImnConsPrasidenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImnConsPrasidenteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ImnConsPrasidenteActionPerformed
+
+    private void MnIniciarEleicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnIniciarEleicaoActionPerformed
+        Eleicao tela = new Eleicao();
+        tela.setVisible(true);
+    }//GEN-LAST:event_MnIniciarEleicaoActionPerformed
 
     /**
      * @param args the command line arguments
